@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <header class="bg-blue-600 text-white py-4">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <h1 class="text-2xl font-bold">Dashboard</h1>
+      <a href="/" class="bg-white text-blue-600 px-4 py-2 rounded-lg shadow">Logout</a>
+    </div>
+  </header>
+
+  <main class="container mx-auto mt-8 px-4">
+    <!-- Properties Section -->
+    <section>
+      <h2 class="text-2xl font-bold mb-4">Properties</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% for (const property of properties) { %>
+          <div class="bg-white shadow rounded-lg overflow-hidden">
+            <img src="<%= property.images[0] %>" alt="Property Image" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="text-xl font-bold"><%= property.title %></h3>
+              <a href="/property/<%= property._id %>" class="block mt-4 text-blue-600">View Details</a>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </section>
+
+    <!-- Roommates Section -->
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold mb-4">Roommates</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <% for (const roommate of roommates) { %>
+          <div class="bg-white shadow rounded-lg overflow-hidden">
+            <img src="<%= roommate.image %>" alt="Roommate Image" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h3 class="text-xl font-bold"><%= roommate.name %></h3>
+              <p class="text-gray-600">Looking near: <%= roommate.propertyTitle %></p>
+              <a href= "/roommate/<%= roommate._id %>"class="block mt-4 text-blue-600">View Profile</a>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
