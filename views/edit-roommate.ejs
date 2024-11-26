@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Edit Roommate</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center">
+  <header class="bg-blue-600 w-full p-4 text-white text-center">
+    <h1 class="text-3xl font-semibold">Edit Roommate</h1>
+  </header>
+  <main class="mt-8 w-full max-w-4xl bg-white shadow rounded-lg p-6">
+    <form action="/edit-roommate/<%= roommate._id %>" method="POST" class="space-y-4">
+      <input type="text" name="name" value="<%= roommate.name %>" class="w-full border p-2 rounded" />
+      <input type="number" name="age" value="<%= roommate.age %>" class="w-full border p-2 rounded" />
+      <input type="text" name="image" value="<%= roommate.image %>" class="w-full border p-2 rounded" />
+      <input type="text" name="propertyTitle" value="<%= roommate.propertyTitle %>" class="w-full border p-2 rounded" />
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Save Changes</button>
+    </form>
+  </main>
+</body>
+</html>

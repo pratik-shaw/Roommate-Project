@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Edit Property</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center">
+  <header class="bg-blue-600 w-full p-4 text-white text-center">
+    <h1 class="text-3xl font-semibold">Edit Property</h1>
+  </header>
+  <main class="mt-8 w-full max-w-4xl bg-white shadow rounded-lg p-6">
+    <form action="/edit-property/<%= property._id %>" method="POST" class="space-y-4">
+      <input type="text" name="title" value="<%= property.title %>" class="w-full border p-2 rounded" />
+      <input type="text" name="description" value="<%= property.description %>" class="w-full border p-2 rounded" />
+      <input type="text" name="price" value="<%= property.price %>" class="w-full border p-2 rounded" />
+      <input type="text" name="image" value="<%= property.images[0] %>" class="w-full border p-2 rounded" />
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Save Changes</button>
+    </form>
+  </main>
+</body>
+</html>

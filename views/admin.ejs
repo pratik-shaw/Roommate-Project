@@ -12,6 +12,7 @@
   </header>
 
   <main class="mt-8 w-full max-w-4xl bg-white shadow rounded-lg p-6">
+    <!-- Add Property -->
     <h2 class="text-2xl font-semibold mb-4">Add Property</h2>
     <form action="/add-property" method="POST" class="space-y-4">
       <input type="text" name="title" placeholder="Property Title" class="w-full border p-2 rounded">
@@ -21,6 +22,23 @@
       <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Add Property</button>
     </form>
 
+    <!-- Manage Properties -->
+    <h2 class="text-2xl font-semibold mt-8 mb-4">Manage Properties</h2>
+    <ul>
+      <% properties.forEach(property => { %>
+        <li class="flex justify-between items-center border-b py-2">
+          <span><%= property.title %> - $<%= property.price %></span>
+          <div class="flex space-x-2">
+            <a href="/edit-property/<%= property._id %>" class="bg-yellow-500 text-white px-3 py-1 rounded">Edit</a>
+            <form action="/delete-property/<%= property._id %>" method="POST">
+              <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded">Delete</button>
+            </form>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+
+    <!-- Add Roommate -->
     <h2 class="text-2xl font-semibold mt-8 mb-4">Add Roommate</h2>
     <form action="/add-roommate" method="POST" class="space-y-4">
       <input type="text" name="name" placeholder="Name" class="w-full border p-2 rounded">
@@ -29,6 +47,22 @@
       <input type="text" name="propertyTitle" placeholder="Property Title" class="w-full border p-2 rounded">
       <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Add Roommate</button>
     </form>
+
+    <!-- Manage Roommates -->
+    <h2 class="text-2xl font-semibold mt-8 mb-4">Manage Roommates</h2>
+    <ul>
+      <% roommates.forEach(roommate => { %>
+        <li class="flex justify-between items-center border-b py-2">
+          <span><%= roommate.name %> (Age: <%= roommate.age %>)</span>
+          <div class="flex space-x-2">
+            <a href="/edit-roommate/<%= roommate._id %>" class="bg-yellow-500 text-white px-3 py-1 rounded">Edit</a>
+            <form action="/delete-roommate/<%= roommate._id %>" method="POST">
+              <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded">Delete</button>
+            </form>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
   </main>
 </body>
 </html>
